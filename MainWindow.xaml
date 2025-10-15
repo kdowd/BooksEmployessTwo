@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BooksEmployess"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="OnAppLoaded">
+        Title="MainWindow" Height="450" Width="1000" Loaded="OnAppLoaded">
     <Window.Resources>
         <Style TargetType="Window" >
             <Setter Property="Background" Value="Orange" />
@@ -24,10 +24,10 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type DataGridCell}">
-                        <Border Padding="{TemplateBinding Padding}" 
-                                BorderBrush="{TemplateBinding BorderBrush}" 
-                                BorderThickness="{TemplateBinding BorderThickness}" 
-                                Background="{TemplateBinding Background}" 
+                        <Border Padding="{TemplateBinding Padding}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
                                 SnapsToDevicePixels="True">
                             <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </Border>
@@ -37,7 +37,7 @@
         </Style>
 
         <Style TargetType="DataGridRow">
-            <Setter Property="Background" Value="White"/>
+            <Setter Property="Background" Value="BlanchedAlmond"/>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#e0e0e0"/>
@@ -51,10 +51,10 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100" ></RowDefinition>
+
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-
-        <DataGrid MaxColumnWidth="160" x:Name="MyDataGrid" AutoGenerateColumns="True" Grid.Row="1" SelectionChanged="MyDataGrid_SelectionChanged" />
+        <Rectangle Fill="DarkGoldenrod" />
+        <DataGrid Padding="5 5" ColumnWidth="*" MaxColumnWidth="160" x:Name="MyDataGrid" AutoGenerateColumns="True" Grid.Row="0" SelectionChanged="MyDataGrid_SelectionChanged" />
     </Grid>
 </Window>
