@@ -1,0 +1,60 @@
+﻿<Window x:Class="BooksEmployess.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BooksEmployess"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="OnAppLoaded">
+    <Window.Resources>
+        <Style TargetType="Window" >
+            <Setter Property="Background" Value="Orange" />
+        </Style>
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected"/>
+            <Setter Property="AlternatingRowBackground" Value="#f0f0f0"/>
+        </Style>
+
+        <Style TargetType="DataGridCell">
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGridCell}">
+                        <Border Padding="{TemplateBinding Padding}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                Background="{TemplateBinding Background}" 
+                                SnapsToDevicePixels="True">
+                            <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="DataGridRow">
+            <Setter Property="Background" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#e0e0e0"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="LightBlue"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" ></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <DataGrid MaxColumnWidth="160" x:Name="MyDataGrid" AutoGenerateColumns="True" Grid.Row="1" SelectionChanged="MyDataGrid_SelectionChanged" />
+    </Grid>
+</Window>
