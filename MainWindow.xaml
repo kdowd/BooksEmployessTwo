@@ -51,10 +51,13 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-
+            <RowDefinition Height="60"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Rectangle Fill="DarkGoldenrod" />
-        <DataGrid Padding="5 5" ColumnWidth="*" MaxColumnWidth="160" x:Name="MyDataGrid" AutoGenerateColumns="True" Grid.Row="0" SelectionChanged="MyDataGrid_SelectionChanged" />
+        <Button Padding="40 16" Content="Open Window" Click="OnAboutClick" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <DataGrid Padding="5 5" ColumnWidth="*" MaxColumnWidth="160" x:Name="MyDataGrid" AutoGenerateColumns="True" Grid.Row="1" SelectionChanged="MyDataGrid_SelectionChanged" />
+
+
     </Grid>
 </Window>
