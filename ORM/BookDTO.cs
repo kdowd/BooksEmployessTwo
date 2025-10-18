@@ -20,13 +20,13 @@ namespace BooksEmployess.ORM
         [BsonElement("author")]
         public string Author { get; set; } = string.Empty;
 
-        [BsonElement("pages")]
+        [BsonElement("pagecount")]
         public int Pages { get; set; } = 0;
 
-        [BsonElement("yearofpublication")]
-        public string YearOfPublication { get; set; } = string.Empty;
+        [BsonElement("price")]
+        public double YearOfPublication { get; set; } = 0.0;
 
-        [BsonElement("image_path")]
+        [BsonElement("image")]
         public string ImageLink { get; set; } = string.Empty;
     }
 

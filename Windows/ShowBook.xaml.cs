@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,7 +24,7 @@ namespace BooksEmployess.Windows
         public ShowBook(Dictionary<string, string> BookData)
         {
             init();
-            this.Title = "Book Details";
+
             title.Text = BookData["title"];
             description.Text = BookData["description"];
             author.Text = BookData["author"];
@@ -31,26 +32,23 @@ namespace BooksEmployess.Windows
             year.Text = BookData["year"];
 
 
-            //poster.Source = new BitmapImage(new Uri(BookData["imagepath"]));
-            //poster.Width = 300;
-            //poster.Height = 300;
-            //poster.SourceUpdated
-
-
-            //Image myImage = new Image();
-            //BitmapImage bitmap = new BitmapImage();
-            //bitmap.BeginInit();
-            //bitmap.UriSource = new Uri("https://placehold.co/300x400?text=Alice's+Adventures+in+Wonderland", UriKind.Absolute);
-            //bitmap.EndInit();
-            //poster.Source = bitmap;
-            //poster.Height = bitmap.Height;
-            //poster.Width = bitmap.Width;
+            Image myImage = new Image();
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(BookData["imagepath"], UriKind.Absolute);
+            bitmap.CacheOption = BitmapCacheOption.OnLoad; // Ensures the image is fully loaded
+            bitmap.EndInit();
+            myImage.Source = bitmap;
+            poster.Source = bitmap;
+            //OR
+            //MyStackPanel.Children.Add(myImage);
+            //MyStackPanel.Children.Insert(1, myImage);
 
 
 
         }
 
-        // Replace the line causing the error with the following:
+
 
 
 
@@ -63,17 +61,7 @@ namespace BooksEmployess.Windows
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            var image = new Image();
-            var fullFilePath = @"https://placehold.co/300x400?text=Alice's+Adventures+in+Wonderland";
 
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.UriSource = new Uri(fullFilePath, UriKind.Absolute);
-            bitmap.EndInit();
-
-            // image.Source = bitmap;
-            poster.Source = bitmap;
-            // MyStackPanel.Children.Add(image);
         }
     }
 }
